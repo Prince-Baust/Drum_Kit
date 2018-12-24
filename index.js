@@ -3,6 +3,7 @@
 for (var i = 0; i < document.querySelectorAll(".drum").length; i++){
    document.querySelectorAll(".drum")[i].addEventListener("click", function () {
       playSound(this.innerHTML);
+      animation(this.innerHTML);
    });
 
 }
@@ -11,6 +12,7 @@ for (var i = 0; i < document.querySelectorAll(".drum").length; i++){
 
 document.addEventListener("keypress", function (event) {
    playSound(event.key);
+   animation(event.key);
 })
 
 // Our function to play sound
@@ -50,4 +52,14 @@ function playSound(key) {
          console.log(event.key);
    }
 
+}
+
+//Our function to animate buttons
+
+function animation(currentKey) {
+    var keyPressed = document.querySelector("." + currentKey);
+    keyPressed.classList.add("pressed");
+    setTimeout(function() {
+        keyPressed.classList.remove("pressed");
+    }, 100);
 }
